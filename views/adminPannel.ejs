@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen bg-gray-100 flex">
+
+  <!-- Sidebar -->
+  <div class="w-64 bg-blue-800 text-white p-6 space-y-6 h-full">
+    <h2 class="text-xl font-semibold">Admin Dashboard</h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="/admin/users" class="flex items-center p-2 text-white hover:bg-blue-600 rounded-md">
+            <span class="material-icons">people</span> Users
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center p-2 text-white hover:bg-blue-600 rounded-md">
+            <span class="material-icons">security</span> Roles
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center p-2 text-white hover:bg-blue-600 rounded-md">
+            <span class="material-icons">lock</span> Permissions
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-8 space-y-6 overflow-y-auto">
+    <!-- Users Section -->
+    <div id="users-section">
+      <h2 class="text-2xl font-semibold text-gray-900">Manage Users</h2>
+      <div class="flex justify-end mb-4">
+        <a href="/adduser" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md">Add User</a>
+      </div>
+      <table class="min-w-full bg-white rounded-lg shadow-md">
+          <thead>
+            <tr class="text-left bg-gray-200">
+              <th class="px-4 py-2">Name</th>
+              <th class="px-4 py-2">Email</th>
+              <th class="px-4 py-2">Role</th>
+              <th class="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+      <% user.forEach(function(val){ %>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-2"><%=val.name%></td>
+                <td class="px-4 py-2"><%=val.email%></td>
+                <td class="px-4 py-2"><%=val.role%></td>
+                <td class="px-4 py-2">
+                  <a href="" class="text-blue-500 hover:text-blue-700">Edit</a>
+                  <a href="" class="text-red-500 hover:text-red-700 ml-2">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+            <% })%>
+        </table>
+    </div>
+
+    <!-- Roles Section -->
+    <div id="roles-section" class="mt-8">
+      <h2 class="text-2xl font-semibold text-gray-900">Manage Roles</h2>
+      <div class="flex justify-end mb-4">
+        <a href="/addrole"><button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md">Add Role</button></a>
+      </div>
+      <table class="min-w-full bg-white rounded-lg shadow-md">
+        <thead>
+          <tr class="text-left bg-gray-200">
+            <th class="px-4 py-2">Role Name</th>
+            <th class="px-4 py-2">Permissions</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%role.forEach(function(val){%>
+            <tr class="border-b">
+                <td class="px-4 py-2"><%=val.rolename%></td>
+                <td class="px-4 py-2"><%=val.permission%></td>
+                <td class="px-4 py-2">
+                  <button class="text-blue-500 hover:text-blue-700">Edit</button>
+                  <button class="text-red-500 hover:text-red-700 ml-2">Delete</button>
+                </td>
+              </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Permissions Section -->
+    <div id="permissions-section" class="mt-8">
+      <h2 class="text-2xl font-semibold text-gray-900">Manage Permissions</h2>
+      <div class="flex justify-end mb-4">
+        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-md">Add Permission</button>
+      </div>
+      <table class="min-w-full bg-white rounded-lg shadow-md">
+        <thead>
+          <tr class="text-left bg-gray-200">
+            <th class="px-4 py-2">Permission Name</th>
+            <th class="px-4 py-2">Description</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="px-4 py-2">Edit Content</td>
+            <td class="px-4 py-2">Allows editing of content</td>
+            <td class="px-4 py-2">
+              <button class="text-blue-500 hover:text-blue-700">Edit</button>
+              <button class="text-red-500 hover:text-red-700 ml-2">Delete</button>
+            </td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-4 py-2">Manage Users</td>
+            <td class="px-4 py-2">Allows managing user accounts</td>
+            <td class="px-4 py-2">
+              <button class="text-blue-500 hover:text-blue-700">Edit</button>
+              <button class="text-red-500 hover:text-red-700 ml-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

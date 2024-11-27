@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table</title>
+  <!-- Link to Tailwind CSS (via CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <!-- Table Container -->
+  <div class="overflow-x-auto shadow-md rounded-lg">
+    <table class="min-w-full table-auto bg-white">
+      <!-- Table Header -->
+      <thead class="bg-blue-600 text-white">
+        <tr>
+          <th class="px-4 py-2 text-left">Name</th>
+          <th class="px-4 py-2 text-left">Email</th>
+          <th class="px-4 py-2 text-left">isLoggedIn</th>
+        </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody>
+            <% users.forEach(function(val){ %>
+                <tr class="border-b">
+                    <td class="px-4 py-2"><%=val.name%></td>
+                    <td class="px-4 py-2"><%=val.email%></td>
+                    <td class="px-4 py-2"><%=val.isloggedin%></td>
+                  </tr>
+            <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    console.log(users);
+  </script>
+</body>
+</html>
